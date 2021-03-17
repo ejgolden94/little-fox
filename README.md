@@ -38,6 +38,7 @@ This is a basic CRUD App using:
 - `get /` - main page of the site, carousel of images giving the vibe of the shop
 - `get /about` - about the shop, location, hours
 ### Flavors 
+- `get /flavors/seed` - seed the data base with flavors
 - `get /flavors` - see all of the icecream flavors  
 - `get /flavors/:id` - see the details of one specific icecream flavor
 - `get /flavors/new` - fill out a form to create a new icecream flavor 
