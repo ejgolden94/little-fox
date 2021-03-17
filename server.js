@@ -5,8 +5,13 @@ const app = express()
 const methodOverride = require('method-override');
 
 /// MIDDLEWARE
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(express.static('public'))
 
-/// ROUTES
+/// CONTROLLERS
+const flavorsController = require('./controllers/flavors');
+app.use('/flavors',flavorsController)
 
 /// LISTENER
 app.listen(PORT, ()=>{
