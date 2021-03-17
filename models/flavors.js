@@ -6,7 +6,8 @@ const flavorSchema = new Schema ({
         description: String,
         price: {type: Number, required: true, min: 0}, 
         available: {type: Boolean, default: true},
-        allergens: Array  
+        allergens: Array,  
+        img: String
 })
 
 const Flavors = model('Flavor', flavorSchema)

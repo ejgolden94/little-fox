@@ -13,7 +13,8 @@ const mongoURI = process.env.MONGODBURI
 const db = mongoose.connection
 mongoose.connect(mongoURI, {
     useFindAndModify: false,
-    useCreateIndex: true, 
+    useNewUrlParser: true, 
+    useCreateIndex: true,
     useUnifiedTopology: true
 })
 

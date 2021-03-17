@@ -6,5 +6,23 @@
 </head>
 <body>
     <h1>Shop Our Flavors</h1>
+    <div class="container">
+        <% for(flavor of flavors){ %>
+            <div>
+                <h2><%=flavor.flavor%></h2>
+                <p><%=flavor.description%></p>
+                <p>$<%=flavor.price%></p>
+                <% if (flavor.allergens){ %>
+                    <p>contains:</p>
+                    <ul>
+                        <% for(allergen of flavor.allergens){ %>
+                            <li><%=allergen%></li>
+                        <%}%>
+                    </ul> 
+                <%}%>
+                <img src="/icecream-flavors/<%=flavor.img%>" style="width:300px" alt="<%=flavor.flavor%>">
+            </div>
+        <%}%>
+    </div>
 </body>
 </html>

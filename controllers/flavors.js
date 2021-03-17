@@ -7,7 +7,15 @@ const flavorsSeed = require('../models/flavorsSeed');
 
 // Flavors Index Route
 router.get('/',(req,res)=>{
-    res.render('index.ejs')
+    Flavors.find({},(err,foundFlavors)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('index.ejs',{
+                flavors: foundFlavors
+            })
+        }
+    })
 })
 
 // Flavors Seed Route 
