@@ -4,6 +4,9 @@ const PORT = process.env.PORT
 const app = express()
 const methodOverride = require('method-override');
 
+/// MODLES
+const Flavors = require('./models/flavors');
+
 /// MIDDLEWARE
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
