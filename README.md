@@ -5,7 +5,7 @@ My sister has an ice cream business called Little Fox Cups and cones. She needs 
 - find out information about the buisiness such as hours and location
 - see all of the available flavors
 - place online orders for pickup. 
-
+---
 ## User Stories
 ### As a customer of the site I would like to be able to:
 - find out more about Little Fox such as hours and location
@@ -21,7 +21,18 @@ My sister has an ice cream business called Little Fox Cups and cones. She needs 
 - edit flavors' descriptions and prices if there are any changes
 - view my current orders (and mark them as completed?)
 - delete icecream flavors that are not in season
-
+---
+## Technologies 
+This is a basic CRUD App using:
+- `Javascript`
+- `HTML`
+- `CSS`
+- `Express`
+- `EJS`
+- `Mongo DB`
+- `Mongoose`
+- `bcrypt`
+---
 ## Routes
 ### General 
 - `get /` - main page of the site, carousel of images giving the vibe of the shop
@@ -42,7 +53,7 @@ My sister has an ice cream business called Little Fox Cups and cones. She needs 
 ### Orders
 - `get /user/:id/orders` - see all of your past orders 
 - `get /orders/active` - admin view of all orders that need to be filled and when
-
+---
 ## Models
 ### icecream
 ```
@@ -73,7 +84,7 @@ My sister has an ice cream business called Little Fox Cups and cones. She needs 
     filled: {type: Boolean, default: false},
 }
 ```
-
+---
 ## Wireframe
 
 ![All Flavors](./littlefox_index.png)
