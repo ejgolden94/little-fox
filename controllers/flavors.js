@@ -48,5 +48,21 @@ router.get('/:id',(req,res)=>{
     })
 })
 
+// Flavors Create Route
+router.post('/',(req,res)=>{
+    req.body.glutenFree = (req.body.glutenFree === 'on')
+    req.body.plantBased = (req.body.plantBased === 'on')
+    req.body.available = true
+    console.log(req.body);
+    Flavors.create(req.body,(err,newFlavor)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(newFlavor);
+            res.redirect('/flavors')
+        }
+    })
+})
+
 
 module.exports = router
