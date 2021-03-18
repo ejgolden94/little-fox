@@ -25,6 +25,7 @@ router.get('/seed',(req,res)=>{
             console.log(err);
         } else {
             console.log(newFlavors);
+            res.redirect('/flavors')
         }
     })
 })

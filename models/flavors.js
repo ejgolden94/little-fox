@@ -6,6 +6,8 @@ const flavorSchema = new Schema ({
         description: String,
         price: {type: Number, required: true, min: 0}, 
         available: {type: Boolean, default: true},
+        glutenFree: {type: Boolean, default: false},
+        plantBased: {type: Boolean, default: false},
         allergens: Array,  
         img: String
 })
