@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Little Fox | Flavors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
 </head>
 <body>
     <h1>Shop Our Flavors</h1>
-    <div class="container">
-        <% for(flavor of flavors){ %>
-            <div>
-                <h2><%=flavor.flavor%></h2>
-                <p><%=flavor.description%></p>
-                <p>$<%=flavor.price%></p>
-                <% if (flavor.allergens){ %>
-                    <p>contains:</p>
-                    <ul>
-                        <% for(allergen of flavor.allergens){ %>
-                            <li><%=allergen%></li>
-                        <%}%>
-                    </ul> 
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <% for (flavor of flavors) { %>
+                    <div class="col m3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img src="/icecream-flavors/<%=flavor.img%>">
+                            </div> 
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">
+                                    <a href="/flavor/<%=flavor.id%"></a><%=flavor.flavor%>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 <%}%>
-                <img src="/icecream-flavors/<%=flavor.img%>" style="width:300px" alt="<%=flavor.flavor%>">
             </div>
-        <%}%>
+        </div>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>
