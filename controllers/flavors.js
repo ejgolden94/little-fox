@@ -30,6 +30,11 @@ router.get('/seed',(req,res)=>{
     })
 })
 
+// Flavors New route 
+router.get('/new',(req,res)=>{
+    res.render('new.ejs')
+})
+
 // Flavors Show Route 
 router.get('/:id',(req,res)=>{
     Flavors.findById(req.params.id,(err,foundFlavor)=>{

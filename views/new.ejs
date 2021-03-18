@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Little Fox | Flavors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+          $(document).ready(function(){
+                $('select').formSelect();
+            });
+    </script>
+</head>
+<body>
+    <div class="section">
+        <h1>Create New Flavor</h1>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <form class="col m12" action="/flavors/" method="POST">
+                    <div class="input-field col m12">
+                      <input id="flavor" name="flavor" type="text" class="validate">
+                      <label for="flavor">Flavor</label>
+                    </div>
+                    <div class="input-field col m12">
+                        <textarea name="description" id="description" class="materialize-textarea"></textarea>
+                        <label for="description">description</label>
+                    </div>
+                    <div class="input-field col m12">
+                        <input id="price" name="price" type="number" class="validate">
+                        <label for="price">Price</label>
+                    </div>
+                    <p>
+                        <label>
+                            <input type="checkbox" id="glutenFree" name="glutenFree" class="filled-in" />
+                            <span>Gluten Free</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" id="plantBased" name="plantBased" class="filled-in" />
+                            <span>Plant-Based Option</span>
+                        </label>
+                    </p>
+                    <div class="input-field col s12">
+                        <select name="allergens" multiple>
+                          <option value="" disabled >Choose your option</option>
+                          <option value="dairy">Dairy</option>
+                          <option value="peanuts">Peanuts</option>
+                          <option value="treenuts">Tree Nuts</option>
+                        </select>
+                        <label>Allergens</label>
+                      </div>
+                    <input class="forest button" type="submit" value="Create New Flavor">
+                </form>
+              </div>  
+        </div>      
+    </div>
+</body>
+</html>
