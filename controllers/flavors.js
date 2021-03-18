@@ -30,5 +30,18 @@ router.get('/seed',(req,res)=>{
     })
 })
 
+// Flavors Show Route 
+router.get('/:id',(req,res)=>{
+    Flavors.findById(req.params.id,(err,foundFlavor)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('show.ejs',{
+                flavor: foundFlavor
+            })
+        }
+    })
+})
+
 
 module.exports = router

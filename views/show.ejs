@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Little Fox | Flavors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><%=flavor.flavor%></h1>
+    </div>
+    <div class="section">
+        <div class="container">
+            <img class="show-img z-depth-3 " src="/icecream-flavors/<%=flavor.img%>">
+            <p><%=flavor.description%></p>
+        </div>
+    </div>
+    <a href="/flavors"><button class="z-depth-3 forest"> Back to Menu </button></a>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>

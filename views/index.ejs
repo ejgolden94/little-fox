@@ -5,11 +5,12 @@
     <title>Little Fox | Flavors</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Shop Our Flavors</h1>
+    <div class="section">
+        <h1>Shop Our Flavors</h1>
+    </div>
     <div class="section">
         <div class="container">
             <div class="row">
@@ -21,7 +22,7 @@
                             </div> 
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">
-                                    <a href="/flavor/<%=flavor.id%"></a><%=flavor.flavor%>
+                                    <a href="/flavors/<%=flavor.id%>"><%=flavor.flavor%></a>
                                 </span>
                             </div>
                         </div>
