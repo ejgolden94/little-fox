@@ -45,7 +45,20 @@ h1 {
     cursor: pointer;
 }
 
-.brand-logo>img{
-    height: 75px;
+.logo>img{
+    height: 100px;
     width: auto;
+}
+
+.greeting {
+    color: white;
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+.greeting > p {
+    width: 60%;
+    text-align: justify;
+    margin: 40px auto;
 }

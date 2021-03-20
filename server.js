@@ -5,6 +5,7 @@ const PORT = process.env.PORT
 const app = express()
 const methodOverride = require('method-override');
 const session = require('express-session');
+const fs = require('fs');
 
 /// DATABASE
 const mongoURI = process.env.MONGODBURI
@@ -38,6 +39,24 @@ const sessionsController = require('./controllers/sessions');
 app.use('/flavors',flavorsController)
 app.use('/users',usersController)
 app.use('/sessions',sessionsController)
+
+/// ROUTES
+// Home Route
+app.get('/',(req,res)=>{
+    res.render('home.ejs',{
+        title: 'Home',
+        currentUser: req.session.currentUser
+    })
+})
+
+// Menu Route
+app.get('/menu',(req,res)=>{
+    const menuFile="./public/media/menu.pdf";
+    fs.readFile(menuFile, (err,data)=>{
+       res.contentType("application/pdf");
+       res.send(data);
+    })
+})
 
 /// LISTENER
 app.listen(PORT, ()=>{

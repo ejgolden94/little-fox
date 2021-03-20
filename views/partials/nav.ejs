@@ -1,6 +1,6 @@
 <nav class="marigold">
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo left"><img src="/media/fox-cream.png"/></a>
+      <a href="/" class="left logo"><img src="/media/fox-cream.png"/></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if (currentUser) { %>
             <li><a href="/flavors/">Shop</a> </li>
@@ -13,6 +13,7 @@
                 </form>
             </li>
         <% } else { %>
+            <li><a href="/menu">Menu</a></li>
             <li><a href="/sessions/new">Log In</a></li>
             <li><a href="/users/new">Sign Up</a></li>
         <% } %>   
