@@ -69,5 +69,18 @@ router.post('/',upload.single('img'),(req,res,next)=>{
     })
 })
 
+// FLavors Edit Route 
+router.get('/:id/edit', (req, res)=>{
+    Flavors.findById(req.params.id, (err,foundFlavor)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('edit.ejs',{
+                flavor: foundFlavor
+            })
+        }
+    })
+})
+
 
 module.exports = router
