@@ -28,8 +28,10 @@ app.use(methodOverride('_method'))
 /// CONTROLLERS
 const flavorsController = require('./controllers/flavors');
 const usersController = require('./controllers/users');
+const sessionsController = require('./controllers/sessions');
 app.use('/flavors',flavorsController)
 app.use('/users',usersController)
+app.use('/sessions',sessionsController)
 
 /// LISTENER
 app.listen(PORT, ()=>{
