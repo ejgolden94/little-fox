@@ -7,8 +7,9 @@ const bcrypt = require('bcrypt');
 
 // New Session Route --- AKA User Login
 router.get('/new',(req,res)=>{
-    res.render('/sessions/new.ejs',{
-        title:'Login'
+    res.render('sessions/new.ejs',{
+        title:'Login',
+        currentUser: req.session.currentUser
     })
 })
 
@@ -19,11 +20,11 @@ router.post('/',(req,res)=>{
             console.log(err);
         } else {
             if(foundUser){
-                if(bcrypt.compareSync(foundUser.password, req.body.password)){
-                    req.session.currentUser = foundUser.username
+                if(bcrypt.compareSync(req.body.password,foundUser.password)){
+                    req.session.currentUser = foundUser
                     res.redirect('/flavors')
                 } else {
-                    res.send("Invlaid password")
+                    res.send("Invalid password")
                 }
             } else {
                 res.send("User not found")

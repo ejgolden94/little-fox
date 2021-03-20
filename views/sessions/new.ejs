@@ -9,13 +9,14 @@
     </script>
 </head>
 <body>
+    <%- include('../partials/nav.ejs') %>
     <div class="section">
         <h1>Login</h1>
     </div>
     <div class="section">
         <div class="container">
             <div class="row">
-                <form class="col m12" action="/users/" method="POST">
+                <form class="col m12" action="/sessions/" method="POST">
 
                     <div class="input-field col m12">
                       <input id="username" name="username" type="text" class="validate">
@@ -26,8 +27,8 @@
                         <input id="password" name="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
-                    
-                    <input class="forest button" type="submit" value="Create User">
+
+                    <input class="forest button" type="submit" value="Login">
                 </form>
               </div>  
         </div>      

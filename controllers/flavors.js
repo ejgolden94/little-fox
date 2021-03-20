@@ -16,7 +16,8 @@ router.get('/',(req,res)=>{
         } else {
             res.render('index.ejs',{
                 flavors: foundFlavors,
-                title: 'Flavors'
+                title: 'Flavors',
+                currentUser: req.session.currentUser
             })
         }
     })
@@ -37,7 +38,8 @@ router.get('/seed',(req,res)=>{
 // Flavors New route 
 router.get('/new',(req,res)=>{
     res.render('new.ejs',{
-        title: 'New Flavor'
+        title: 'New Flavor',
+        currentUser: req.session.currentUser
     })
 })
 
@@ -49,7 +51,8 @@ router.get('/:id',(req,res)=>{
         } else {
             res.render('show.ejs',{
                 flavor: foundFlavor,
-                title: foundFlavor.flavor
+                title: foundFlavor.flavor,
+                currentUser: req.session.currentUser
             })
         }
     })
@@ -81,7 +84,8 @@ router.get('/:id/edit', (req, res)=>{
         } else {
             res.render('edit.ejs',{
                 flavor: foundFlavor,
-                title: 'Edit Flavor'
+                title: 'Edit Flavor',
+                currentUser: req.session.currentUser
             })
         }
     })

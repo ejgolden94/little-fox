@@ -8,7 +8,8 @@ const User = require('../models/users');
 // New User Route
 router.get('/new', (req,res)=>{
     res.render('users/new.ejs',{
-        title: 'New User'
+        title: 'New User', 
+        currentUser: req.session.currentUser
     })
 })
 
