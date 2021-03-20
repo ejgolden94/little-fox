@@ -101,5 +101,17 @@ router.put('/:id',upload.single('img'),(req,res,next)=>{
     })
 })
 
+// Flavors Destroy Route 
+router.delete('/:id',(req,res)=>{
+    Flavors.findByIdAndDelete(req.params.id,(err, deletedFlavor)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(deletedFlavor);
+            res.redirect('/flavors')
+        }
+    })
+})
+
 
 module.exports = router
