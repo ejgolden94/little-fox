@@ -36,9 +36,11 @@ app.use(session({
 const flavorsController = require('./controllers/flavors');
 const usersController = require('./controllers/users');
 const sessionsController = require('./controllers/sessions');
+const ordersController = require('./controllers/orders');
 app.use('/flavors',flavorsController)
 app.use('/users',usersController)
 app.use('/sessions',sessionsController)
+app.use('/orders',ordersController)
 
 /// ROUTES
 // Home Route
