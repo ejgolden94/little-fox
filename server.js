@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT
 const app = express()
 const methodOverride = require('method-override');
+const session = require('express-session');
 
 /// DATABASE
 const mongoURI = process.env.MONGODBURI
@@ -24,6 +25,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
+app.use(session({
+    secret = process.env.SECRET, 
+    resave: false,
+    saveUninitialized: false
+}))
 
 /// CONTROLLERS
 const flavorsController = require('./controllers/flavors');
