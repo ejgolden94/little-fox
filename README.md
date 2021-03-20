@@ -32,6 +32,7 @@ This is a basic CRUD App using:
 - `Mongo DB`
 - `Mongoose`
 - `bcrypt`
+- `Multer`
 ---
 ## Routes
 ### General 

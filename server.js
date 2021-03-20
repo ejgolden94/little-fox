@@ -5,9 +5,6 @@ const PORT = process.env.PORT
 const app = express()
 const methodOverride = require('method-override');
 
-/// MODELS
-const Flavors = require('./models/flavors');
-
 /// DATABASE
 const mongoURI = process.env.MONGODBURI
 const db = mongoose.connection
@@ -30,7 +27,9 @@ app.use(methodOverride('_method'))
 
 /// CONTROLLERS
 const flavorsController = require('./controllers/flavors');
+const usersController = require('./controllers/users');
 app.use('/flavors',flavorsController)
+app.use('/users',usersController)
 
 /// LISTENER
 app.listen(PORT, ()=>{
