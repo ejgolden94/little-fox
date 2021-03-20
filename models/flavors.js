@@ -9,7 +9,7 @@ const flavorSchema = new Schema ({
         glutenFree: {type: Boolean, default: false},
         plantBased: {type: Boolean, default: false},
         allergens: Array,  
-        img: String
+        img: {data: Buffer, contentType: String}
 })
 
 const Flavors = model('Flavor', flavorSchema)

@@ -1,4 +1,7 @@
 const express = require('express');
+const multer  = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
 const router = express.Router()
 const Flavors = require('../models/flavors');
 const flavorsSeed = require('../models/flavorsSeed');
@@ -49,16 +52,18 @@ router.get('/:id',(req,res)=>{
 })
 
 // Flavors Create Route
-router.post('/',(req,res)=>{
+router.post('/',upload.single('img'),(req,res,next)=>{
     req.body.glutenFree = (req.body.glutenFree === 'on')
     req.body.plantBased = (req.body.plantBased === 'on')
     req.body.available = true
-    console.log(req.body);
+    req.body.img = {
+        data: req.file.buffer,
+        contentType: 'image/jpeg'
+    }
     Flavors.create(req.body,(err,newFlavor)=>{
         if (err) {
             console.log(err);
         } else {
-            console.log(newFlavor);
             res.redirect('/flavors')
         }
     })

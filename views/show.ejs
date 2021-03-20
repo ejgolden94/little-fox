@@ -13,7 +13,8 @@
     </div>
     <div class="section">
         <div class="container">
-            <img class="show-img z-depth-3 " src="/icecream-flavors/<%=flavor.img%>">
+            <img class="show-img z-depth-3" src="data:image/<%=flavor.img.contentType%>;base64,
+                <%=flavor.img.data.toString('base64')%>">
             <p><%=flavor.description%></p>
         </div>
     </div>
