@@ -69,7 +69,7 @@ router.post('/',upload.single('img'),(req,res,next)=>{
     })
 })
 
-// FLavors Edit Route 
+// Flavors Edit Route 
 router.get('/:id/edit', (req, res)=>{
     Flavors.findById(req.params.id, (err,foundFlavor)=>{
         if (err) {
@@ -78,6 +78,25 @@ router.get('/:id/edit', (req, res)=>{
             res.render('edit.ejs',{
                 flavor: foundFlavor
             })
+        }
+    })
+})
+
+// Flavors Update Route
+router.put('/:id',upload.single('img'),(req,res,next)=>{
+    req.body.glutenFree = (req.body.glutenFree === 'on')
+    req.body.plantBased = (req.body.plantBased === 'on')
+    req.body.available = (req.body.available === 'on')
+    req.body.img = {
+        data: req.file.buffer,
+        contentType: 'image/jpeg'
+    }
+    Flavors.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedFlavor)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(updatedFlavor);
+            res.redirect('/flavors/'+req.params.id)
         }
     })
 })

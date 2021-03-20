@@ -26,10 +26,10 @@ db.on('disconnected',()=>{console.log('mongo is disconnected')})
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 /// CONTROLLERS
 const flavorsController = require('./controllers/flavors');
-const { Mongoose } = require('mongoose');
 app.use('/flavors',flavorsController)
 
 /// LISTENER

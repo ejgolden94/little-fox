@@ -21,7 +21,7 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <form class="col m12" action="/flavors/" enctype="multipart/form-data" method="POST">
+                <form class="col m12" action="/flavors/<%=flavor.id%>?_method=PUT" enctype="multipart/form-data" method="POST">
                     <div class="input-field col m12">
                       <input id="flavor" name="flavor" type="text" class="validate" value="<%=flavor.flavor%>">
                       <label for="flavor">Flavor</label>
