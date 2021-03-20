@@ -33,5 +33,18 @@ router.post('/',(req,res)=>{
     })
 })
 
+/// Destroy Session Route 
+router.delete('/',(req,res)=>{
+    const loggedOutUser = req.session.currentUser
+    req.session.destroy( err => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Successfully Logged Out: " + loggedOutUser);
+        }
+        res.redirect('/')
+    })
+})
+
 
 module.exports = router
