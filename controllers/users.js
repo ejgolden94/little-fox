@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router()
 const bcrypt = require('bcrypt');
 const User = require('../models/users');
+const userAdmins = require('../models/userAdmins');
 
 // ROUTES
 
@@ -13,7 +14,7 @@ router.get('/new', (req,res)=>{
     })
 })
 
-// Creat User Route
+// Create User Route
 router.post('/', (req, res)=>{
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
 
@@ -25,6 +26,18 @@ router.post('/', (req, res)=>{
         } else {
             console.log(newUser);
             res.redirect('/flavors')
+        }
+    })
+})
+
+// Manage Admin Users
+router.get('/admins',(req,res)=>{
+    User.updateMany({username: {$in : userAdmins}}, {$set:{isAdmin: true}}, (err,updatedUser)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(updatedUser);
+            res.redirect('/')
         }
     })
 })
