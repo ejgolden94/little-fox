@@ -7,16 +7,28 @@ const Flavors = require('../models/flavors');
 
 
 // Index Route for the Cart
-// router.get('/:username/cart',(req,res)=>{
-//     // find an order tied to the current user's name that is not submitted
-//     // display a cart html page 
-// })
+router.get('/:username/cart',(req,res)=>{
+    // find an order tied to the current user's name that is not submitted
+    // display a cart html page 
+    Order.find({user: req.params.username, orderStatus: 'in cart'}, (err, foundCart)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(foundCart[0].orderItems)
+            res.render('cart/index.ejs', {
+                cart: foundCart[0],
+                currentUser: req.session.currentUser,
+                title: 'Cart'
+            })
+        }
+    })
+})
 
 
 // Add to Order Route 
 router.get('/:username/:id/add',(req,res)=>{
     Flavors.findById(req.params.id,(err,foundFlavor)=>{
-        const newOrderItem = {product: foundFlavor.flavor, qty: 1}
+        const newOrderItem = {product: foundFlavor.flavor, quantity: 1}
         Order.findOneAndUpdate(
             {user: req.params.username, orderStatus: 'in cart'},
             {$push:{orderItems: newOrderItem}, $inc:{orderTotal: foundFlavor.price}},
@@ -37,7 +49,6 @@ router.get('/:username/:id/add',(req,res)=>{
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log("-----new cart------");
                             console.log(newOrder);
                             res.redirect('back')
                         }

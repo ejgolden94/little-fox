@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="section">
+        <h1>Your Cart</h1>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <% for (item of cart.orderItems) { %>
+                    <div class="col s12 m6">
+                        <div class="card forest">
+                          <div class="card-content white-text">
+                            <span class="card-title"><%=item.product%></span>
+                            <p>Qty: <%=item.quantity%> </p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">Remove Item</a>
+                            <a href="#"><i class="small material-icons">keyboard_arrow_up</i></a>
+                            <a href="#"><i class="small material-icons">keyboard_arrow_down</i></a>
+                          </div>
+                        </div>
+                      </div>              
+                <%}%>
+            </div>
+            <a href="/flavors/" class="button forest">
+                Back to Shop
+            </a>
+        </div>
+    </div>
+</body>
+</html>
