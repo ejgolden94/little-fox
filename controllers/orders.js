@@ -58,5 +58,34 @@ router.get('/:username/:id/add',(req,res)=>{
     })
 })
 
+// edit item From your cart
+router.put('/:username/:id/:itemId/:action',(req, res)=>{
+    if (req.params.action === 'remove') {
+        Order.findByIdAndUpdate(req.params.id,{$pull:{orderItems:{ '_id': req.params.itemId }}}, { safe: true, upsert: true }, (err, updatedItem)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect('/orders/'+req.params.username+'/cart')
+            }
+        })
+    } else if(req.params.action === 'inc') {
+        Order.findOneAndUpdate({'_id': req.params.id,'orderItems._id': req.params.itemId },{$inc:{'orderItems.$.quantity': 1}}, (err, updatedItem)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect('/orders/'+req.params.username+'/cart')
+            }
+        })
+    } else if(req.params.action === 'dec') {
+        Order.findOneAndUpdate({'_id': req.params.id,'orderItems._id': req.params.itemId },{$inc:{'orderItems.$.quantity': -1}}, (err, updatedItem)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect('/orders/'+req.params.username+'/cart')
+            }
+        })
+    }
+})
+
 
 module.exports = router

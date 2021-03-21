@@ -19,9 +19,19 @@
                             <p>Qty: <%=item.quantity%> </p>
                           </div>
                           <div class="card-action">
-                            <a href="#">Remove Item</a>
-                            <a href="#"><i class="small material-icons">keyboard_arrow_up</i></a>
-                            <a href="#"><i class="small material-icons">keyboard_arrow_down</i></a>
+                            <form action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/remove?_method=PUT" method="POST">
+                                <input class="button forest cart-action" type="submit" value="Remove Item">
+                            </form>
+                            <form class="cart-action" action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/inc?_method=PUT" method="POST">
+                                <button class="btn waves-effect waves-light forest cart-action" type="submit">
+                                    <i class="small material-icons">keyboard_arrow_up</i>
+                                </button>
+                            </form>
+                            <form class="cart-action" action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/dec?_method=PUT" method="POST">
+                                <button class="btn waves-effect waves-light forest cart-action" type="submit">
+                                    <i class="small material-icons">keyboard_arrow_down</i>
+                                </button>
+                            </form>
                           </div>
                         </div>
                       </div>              
