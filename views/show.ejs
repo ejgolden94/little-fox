@@ -16,12 +16,14 @@
         </div>
     </div>
     <a href="/flavors"><button class="z-depth-3 forest button"> Back to Menu </button></a>
-    <a href="/flavors/<%=flavor.id%>/edit" class="btn-floating btn-large rose">
-        Edit
-    </a>
-    <form action="/flavors/<%=flavor.id%>?_method=DELETE" method="POST">
-        <input class="btn-floating btn-large rose" type="submit" value="Delete">
-    </form>
+    <% if (currentUser.isAdmin) { %>
+        <a href="/flavors/<%=flavor.id%>/edit" class="btn-floating btn-large rose">
+            Edit
+        </a>
+        <form action="/flavors/<%=flavor.id%>?_method=DELETE" method="POST">
+            <input class="btn-floating btn-large rose" type="submit" value="Delete">
+        </form>
+      <% } %>
     <% if (currentUser) {%>
         <a href="/orders/<%=currentUser.username%>/<%=flavor.id%>/add" class="button forest">
             Add to Cart

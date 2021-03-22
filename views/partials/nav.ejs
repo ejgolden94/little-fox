@@ -3,8 +3,12 @@
       <a href="/" class="left logo"><img src="/media/fox-cream.png"/></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if (currentUser) { %>
-            <li><a href="/flavors/">Shop</a> </li>
+          <% if (currentUser.isAdmin) { %>
             <li><a href="/flavors/new">Add New Flavor</a> </li>
+            <li><a href="/orders/active">View Orders</a> </li>
+          <% } %>
+            <li><a href="/flavors/">Shop</a> </li>
+            <li><a href="/menu">PDF Menu</a></li>
             <li>Welcome <%= currentUser.username %></li>
             <li><a href="/orders/<%= currentUser.username %>/cart/"><i class="material-icons ">shopping_cart</i></a></li>
             <li>
@@ -13,7 +17,6 @@
                 </form>
             </li>
         <% } else { %>
-            <li><a href="/menu">Menu</a></li>
             <li><a href="/sessions/new">Log In</a></li>
             <li><a href="/users/new">Sign Up</a></li>
         <% } %>   
