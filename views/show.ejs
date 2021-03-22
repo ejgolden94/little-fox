@@ -6,7 +6,7 @@
 <body>
     <%- include('./partials/nav.ejs') %>
     <div class="container">
-        <h1><%=flavor.flavor%></h1>
+        <h1 style="font-size: 40px;"><%=flavor.flavor.toUpperCase()%></h1>
     </div>
     <div class="section">
         <div class="container">
@@ -15,19 +15,19 @@
             <p><%=flavor.description%></p>
         </div>
     </div>
-    <a href="/flavors"><button class="z-depth-3 forest button"> Back to Menu </button></a>
-    <% if (currentUser.isAdmin) { %>
-        <a href="/flavors/<%=flavor.id%>/edit" class="btn-floating btn-large rose">
-            Edit
-        </a>
-        <form action="/flavors/<%=flavor.id%>?_method=DELETE" method="POST">
-            <input class="btn-floating btn-large rose" type="submit" value="Delete">
-        </form>
-      <% } %>
     <% if (currentUser) {%>
-        <a href="/orders/<%=currentUser.username%>/<%=flavor.id%>/add" class="button forest">
-            Add to Cart
+        <a href="/orders/<%=currentUser.username%>/<%=flavor.id%>/add">
+            <button class="z-depth-3 forest button"> Add to Cart </button>
         </a>
     <%}%>
+    <a href="/flavors"><button class="z-depth-3 forest button"> Back to Menu </button></a>
+    <% if (currentUser.isAdmin) { %>
+        <a href="/flavors/<%=flavor.id%>/edit">
+            <button class="z-depth-3 rose right button"> Edit </button>
+        </a>
+        <form action="/flavors/<%=flavor.id%>?_method=DELETE" method="POST">
+            <input class="z-depth-3 button rose right" type="submit" value="Delete">
+        </form>
+    <% } %>
 </body>
 </html>

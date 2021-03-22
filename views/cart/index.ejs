@@ -14,7 +14,7 @@
     <%- include('../partials/nav.ejs') %>
     <% if(cart) { console.log(cart)%>
     <div class="section">
-        <h1>Your Cart</h1>
+        <h1>YOUR CART</h1>
     </div>
     <div class="section">
         <div class="container">
@@ -72,10 +72,10 @@
             </div>
             <% } else { %>
                 <h1>Your Cart Is Empty</h1>
-                <h3>Checkout the shop to add products to your cart!</h3>
+                <h4 style="margin: 100px auto">Checkout the shop to add products to your cart!</h4>
             <%}%>
-            <a href="/flavors/" class="button forest">
-                Back to Shop
+            <a href="/flavors/">
+                <button class="z-depth-3 forest button"> Back to Shop </button>
             </a>
         </div>
     </div>
