@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+    <script>
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="section">
+        <h1>All Active Orders</h1>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <% for (order of orders) { %>
+                    <div class="col s12 m6">
+                        <div class="card forest">
+                          <div class="card-content white-text">
+                            <span class="card-title"><%=order.orderName%> - <%=order.pickUpDate.toLocaleDateString("en-US")%> <%=order.pickUpTime%></span>
+                            <ul>
+                                <%for (item of order.orderItems) {%>
+                                    <li><%=item.product%> (<%=item.quantity%>)</li>
+                                <%}%>
+                            </ul>
+                            <p>Order Total: $<%=order.orderTotal%></p>
+                          </div>
+                          <div class="card-action">
+                            <form action="/orders/<%=order.id%>/edit?_method=PUT" method="POST">
+                                <select name="orderStatus" onchange="this.form.submit()">
+                                    <option value="pending" <%if(order.orderStatus === 'pending'){%> selected=true <%}%> >Pending</option>
+                                    <option value="confirmed" <%if(order.orderStatus === 'confirmed'){%> selected=true <%}%>>Confirmed</option>
+                                    <option value="complete" <%if(order.orderStatus === 'complete'){%> selected=true <%}%>>Complete</option>
+                                    <option value="picked up" <%if(order.orderStatus === 'picked up'){%> selected=true <%}%>>Picked Up</option>
+                                    <option value="cancelled" <%if(order.orderStatus === 'cancelled'){%> selected=true <%}%>>Cancelled</option>
+                                </select>
+                            </form>                           
+                          </div>
+                        </div>
+                      </div>              
+                <%}%>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

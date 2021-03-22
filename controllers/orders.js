@@ -5,6 +5,20 @@ const Flavors = require('../models/flavors');
 
 /// ROUTES 
 
+// Index route for active orders
+router.get('/active', (req,res)=>{
+    Order.find({orderStatus: {$nin:['in cart', 'cancelled', 'picked up']}}, (err, foundOrders)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('orders/index.ejs',{
+                currentUser: req.session.currentUser,
+                title: 'Cart',
+                orders: foundOrders
+            })
+        }
+    })
+})
 
 // Index Route for the Cart
 router.get('/:username/cart',(req,res)=>{
@@ -85,17 +99,25 @@ router.put('/:username/:id/:itemId/:action',(req, res)=>{
     }
 })
 
-
-/// Place Order (Edit) Route 
-router.put('/:id/placeOrder',(req,res)=>{
-    req.body.orderStatus = 'pending'
-    console.log(req.body)
+/// Edit Order Route 
+router.put('/:id/edit',(req,res)=>{
     Order.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedOrder)=>{
         if (err) {
             console.log(err);
         } else {
-            console.log(updatedOrder);
-            res.redirect('/orders/'+currentUser.username+'/cart')
+            res.redirect('/orders/active')
+        }
+    })
+})
+
+/// Place Order (Edit) Route 
+router.put('/:id/placeOrder',(req,res)=>{
+    req.body.orderStatus = 'pending'
+    Order.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedOrder)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/orders/'+req.session.currentUser.username+'/cart')
         }
     })
 })
