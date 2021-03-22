@@ -14,7 +14,6 @@ router.get('/:username/cart',(req,res)=>{
         if (err) {
             console.log(err);
         } else {
-            console.log(foundCart[0].orderItems)
             res.render('cart/index.ejs', {
                 cart: foundCart[0],
                 currentUser: req.session.currentUser,
@@ -24,8 +23,7 @@ router.get('/:username/cart',(req,res)=>{
     })
 })
 
-
-// Add to Order Route 
+// Add to Cart Route 
 router.get('/:username/:id/add',(req,res)=>{
     Flavors.findById(req.params.id,(err,foundFlavor)=>{
         const newOrderItem = {product: foundFlavor.flavor, quantity: 1}
@@ -85,6 +83,21 @@ router.put('/:username/:id/:itemId/:action',(req, res)=>{
             }
         })
     }
+})
+
+
+/// Place Order (Edit) Route 
+router.put('/:id/placeOrder',(req,res)=>{
+    req.body.orderStatus = 'pending'
+    console.log(req.body)
+    Order.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedOrder)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(updatedOrder);
+            res.redirect('/orders/'+currentUser.username+'/cart')
+        }
+    })
 })
 
 

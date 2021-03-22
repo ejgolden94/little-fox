@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <%- include('../partials/head.ejs') %>
+    <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+            $('.timepicker').timepicker();
+            $('.datepicker').datepicker();
+        });
+    </script>
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
+    <% if(cart) { console.log(cart)%>
     <div class="section">
         <h1>Your Cart</h1>
     </div>
@@ -37,6 +45,35 @@
                       </div>              
                 <%}%>
             </div>
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn modal-trigger forest button white-text" href="#modal1">Place Order</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <form action="/orders/<%=cart.id%>/placeOrder?_method=PUT" method="POST">
+                    <div class="modal-content">
+                        <h4>Order Details</h4>
+                        <div class="input-field">
+                            <input id="orderName" name="orderName" type="text" class="validate">
+                            <label for="orderName">Your Name</label>
+                        </div>
+                        <div class="input-field">
+                            <input class="datepicker" id="pickUpDate" name="pickUpDate" type="text" class="validate">
+                            <label for="pickUpDate">Pick Up Date</label>
+                        </div>
+                        <div class="input-field">
+                            <input class="timepicker" id="pickUpTime" name="pickUpTime" type="text" class="validate">
+                            <label for="pickUpTime">Pick Up Time</label>
+                        </div>
+                                    
+                        <input class="forest button white-text modal-close waves-effect waves-green" type="submit" value="Place Order">
+                    </div>
+                </form>
+            </div>
+            <% } else { %>
+                <h1>Your Cart Is Empty</h1>
+                <h3>Checkout the shop to add products to your cart!</h3>
+            <%}%>
             <a href="/flavors/" class="button forest">
                 Back to Shop
             </a>

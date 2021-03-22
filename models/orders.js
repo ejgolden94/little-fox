@@ -9,7 +9,8 @@ const orderSchema = new Schema ({
     orderName: String,
     user: {type: String, required: true},
     orderStatus: String,
-    pickUpTime: Date,
+    pickUpTime: String,
+    pickUpDate: Date,
     orderTotal: Number
 })
 
