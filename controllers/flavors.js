@@ -96,8 +96,8 @@ router.put('/:id',upload.single('img'),(req,res,next)=>{
     req.body.glutenFree = (req.body.glutenFree === 'on')
     req.body.plantBased = (req.body.plantBased === 'on')
     req.body.available = (req.body.available === 'on')
-    /// making sure that the user does not have to provide a photo input every time they want to edit a record
-    if (! req.body.img){
+    // making sure that the user does not have to provide a photo input every time they want to edit a record
+    if (! req.file){
         Flavors.findById(req.params.id,(err,foundFlavor)=>{
             if (err) {
                 console.log(err);

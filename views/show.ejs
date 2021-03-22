@@ -10,8 +10,10 @@
     </div>
     <div class="section">
         <div class="container">
+            <% if (flavor.img.contentType) { %>
             <img class="show-img z-depth-3" src="data:image/<%=flavor.img.contentType%>;base64,
                 <%=flavor.img.data.toString('base64')%>">
+            <%}%>
             <p><%=flavor.description%></p>
         </div>
     </div>
@@ -21,13 +23,15 @@
         </a>
     <%}%>
     <a href="/flavors"><button class="z-depth-3 forest button"> Back to Menu </button></a>
-    <% if (currentUser.isAdmin) { %>
-        <a href="/flavors/<%=flavor.id%>/edit">
-            <button class="z-depth-3 rose right button"> Edit </button>
-        </a>
-        <form action="/flavors/<%=flavor.id%>?_method=DELETE" method="POST">
-            <input class="z-depth-3 button rose right" type="submit" value="Delete">
-        </form>
+    <% if (currentUser) { %>
+        <% if (currentUser.isAdmin) { %>
+            <a href="/flavors/<%=flavor.id%>/edit">
+                <button class="z-depth-3 rose right button"> Edit </button>
+            </a>
+            <form action="/flavors/<%=flavor.id%>?_method=DELETE" method="POST">
+                <input class="z-depth-3 button rose right" type="submit" value="Delete">
+            </form>
+        <% } %>
     <% } %>
 </body>
 </html>

@@ -7,7 +7,7 @@ module.exports = [
         glutenFree: false,
         plantBased: false,
         allergens: ['dairy','peanuts'], 
-        img: 'this_is_not_a_beer.jpg'
+        img: null
     },
     {
         flavor: 'Pink Panther',
@@ -17,7 +17,7 @@ module.exports = [
         glutenFree: false,
         plantBased: false,
         allergens: ['dairy'], 
-        img: 'pink_panther.jpg'
+        img: null
     },
     {
         flavor: 'A Berry Blue Cobbler',
@@ -26,8 +26,8 @@ module.exports = [
         available: true,
         glutenFree: false,
         plantBased: false,
-        allergens: ['dairy'], 
-        img: 'berry_blue.jpg'
+        allergens: ['dairy'],
+        img: null
     },
     {
         flavor: 'Once Upon a Time in Hollywood',
@@ -37,7 +37,7 @@ module.exports = [
         glutenFree: true,
         plantBased: true,
         allergens: ['dairy'], 
-        img: 'hollywood.jpg'
+        img: null
     },
     {
         flavor: 'Cooler Than You Think',
@@ -47,7 +47,7 @@ module.exports = [
         glutenFree: false,
         plantBased: false,
         allergens: ['dairy'], 
-        img: 'cooler_than_you_think.jpg'
+        img: null
     },
     {
         flavor: 'Easy Street',
@@ -57,7 +57,7 @@ module.exports = [
         glutenFree: true,
         plantBased: true,
         allergens: ['dairy'], 
-        img: 'easy_street.jpg'
+        img: null
     },
     {
         flavor: 'Tropic Like It\'s Hot',
@@ -67,7 +67,7 @@ module.exports = [
         glutenFree: true,
         plantBased: false,
         allergens: ['dairy'], 
-        img: 'tropic.jpg'
+        img: null
     },
     {
         flavor: 'Let Them Eat Cake',
@@ -77,7 +77,7 @@ module.exports = [
         glutenFree: false,
         plantBased: true,
         allergens: ['dairy'], 
-        img: 'cake.jpg'
+        img: null
     },
     {
         flavor: 'Things \'n\' Stuff',
@@ -87,6 +87,6 @@ module.exports = [
         glutenFree: false,
         plantBased: false,
         allergens: ['dairy'], 
-        img: 'things_n_stuff.jpg'
-    },
+        img: null
+    }
 ]
