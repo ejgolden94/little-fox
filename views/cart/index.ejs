@@ -28,8 +28,8 @@
                             <p>Price: <%=item.price%> </p>
                           </div>
                           <div class="card-action">
-                            <form action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/remove?_method=PUT" method="POST">
-                                <input class="button forest cart-action" type="submit" value="Remove Item">
+                            <form class="cart-action" action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/remove?_method=PUT" method="POST">
+                                <input class="btn forest cart-action" type="submit" value="Remove Item">
                             </form>
                             <form class="cart-action" action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/inc?_method=PUT" method="POST">
                                 <button class="btn waves-effect waves-light forest cart-action" type="submit">
@@ -50,7 +50,9 @@
                 <h2>Order Total: $<%=cart.orderTotal%></h2>
             </div>
             <!-- Modal Trigger -->
-            <a class="waves-effect waves-light btn modal-trigger forest button white-text" href="#modal1">Place Order</a>
+            <a class="modal-trigger" href="#modal1">
+                <button class="z-depth-3 forest button"> Place Order </button>
+            </a>
 
             <!-- Modal Structure -->
             <div id="modal1" class="modal">
@@ -58,19 +60,18 @@
                     <div class="modal-content">
                         <h4>Order Details</h4>
                         <div class="input-field">
-                            <input id="orderName" name="orderName" type="text" class="validate">
+                            <input id="orderName" name="orderName" type="text" class="validate" required>
                             <label for="orderName">Your Name</label>
                         </div>
                         <div class="input-field">
-                            <input class="datepicker" id="pickUpDate" name="pickUpDate" type="text" class="validate">
+                            <input class="datepicker" id="pickUpDate" name="pickUpDate" type="text" class="validate" required>
                             <label for="pickUpDate">Pick Up Date</label>
                         </div>
                         <div class="input-field">
-                            <input class="timepicker" id="pickUpTime" name="pickUpTime" type="text" class="validate">
+                            <input class="timepicker" id="pickUpTime" name="pickUpTime" type="text" class="validate" required>
                             <label for="pickUpTime">Pick Up Time</label>
                         </div>
-                                    
-                        <input class="forest button white-text modal-close waves-effect waves-green" type="submit" value="Place Order">
+                        <input class="forest button" type="submit" value="Place Order">
                     </div>
                 </form>
             </div>

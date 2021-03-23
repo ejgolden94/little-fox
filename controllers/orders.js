@@ -130,6 +130,7 @@ router.put('/:id/placeOrder',(req,res)=>{
         if (err) {
             console.log(err);
         } else {
+            console.log('placed order');
             res.redirect('/orders/'+req.session.currentUser.username+'/cart')
         }
     })
