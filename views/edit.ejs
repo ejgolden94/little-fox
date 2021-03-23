@@ -26,7 +26,7 @@
                         <label for="description">description</label>
                     </div>
                     <div class="input-field col m12">
-                        <input id="price" name="price" type="number" class="validate" value="<%=flavor.price%>">
+                        <input id="price" name="price" type="number" step="any" class="validate" value="<%=flavor.price%>">
                         <label for="price">Price</label>
                     </div>
                     <p>
@@ -61,10 +61,15 @@
                           <option value="treenuts" <% if(flavor.allergens.includes('treenuts')){%> selected="true" <%}%>>Tree Nuts</option>
                         </select>
                         <label>Allergens</label>
-                      </div>
-                      <div class="input-field col m12">
-                        <input id="img" name="img" type="file">
-                        <label for="img">Image</label>
+                    </div>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Image</span>
+                            <input id="img" name="img" type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text">
+                        </div>
                     </div>
                     <input class="forest button" type="submit" value="Submit Changes">
                 </form>
