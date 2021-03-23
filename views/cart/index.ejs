@@ -12,7 +12,7 @@
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
-    <% if(cart) { console.log(cart)%>
+    <% if(cart && cart.orderItems.length !== 0) {%>
     <div class="section">
         <h1>YOUR CART</h1>
     </div>
@@ -25,6 +25,7 @@
                           <div class="card-content white-text">
                             <span class="card-title"><%=item.product%></span>
                             <p>Qty: <%=item.quantity%> </p>
+                            <p>Price: <%=item.price%> </p>
                           </div>
                           <div class="card-action">
                             <form action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/remove?_method=PUT" method="POST">
@@ -44,6 +45,9 @@
                         </div>
                       </div>              
                 <%}%>
+            </div>
+            <div class="section">
+                <h2>Order Total: $<%=cart.orderTotal%></h2>
             </div>
             <!-- Modal Trigger -->
             <a class="waves-effect waves-light btn modal-trigger forest button white-text" href="#modal1">Place Order</a>
@@ -70,7 +74,7 @@
                     </div>
                 </form>
             </div>
-            <% } else { %>
+            <% } else {%>
                 <h1>Your Cart Is Empty</h1>
                 <h4 style="margin: 100px auto">Checkout the shop to add products to your cart!</h4>
             <%}%>

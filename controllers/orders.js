@@ -40,7 +40,7 @@ router.get('/:username/cart',(req,res)=>{
 // Add to Cart Route 
 router.get('/:username/:id/add',(req,res)=>{
     Flavors.findById(req.params.id,(err,foundFlavor)=>{
-        const newOrderItem = {product: foundFlavor.flavor, quantity: 1}
+        const newOrderItem = {product: foundFlavor.flavor, quantity: 1, price: foundFlavor.price}
         Order.findOneAndUpdate(
             {user: req.params.username, orderStatus: 'in cart'},
             {$push:{orderItems: newOrderItem}, $inc:{orderTotal: foundFlavor.price}},
@@ -72,27 +72,40 @@ router.get('/:username/:id/add',(req,res)=>{
 
 // edit item From your cart
 router.put('/:username/:id/:itemId/:action',(req, res)=>{
+    const newTotal = (updatedOrder) =>{
+        let newTotal = 0
+                for(item of updatedOrder.orderItems){
+                    newTotal += item.quantity * item.price
+                }
+        return newTotal
+    }
     if (req.params.action === 'remove') {
-        Order.findByIdAndUpdate(req.params.id,{$pull:{orderItems:{ '_id': req.params.itemId }}}, { safe: true, upsert: true }, (err, updatedItem)=>{
+        Order.findByIdAndUpdate(req.params.id,{$pull:{orderItems:{ '_id': req.params.itemId }}}, {new:true}, (err, updatedOrder)=>{
             if (err) {
                 console.log(err);
             } else {
+                updatedOrder.orderTotal = newTotal(updatedOrder)
+                updatedOrder.save()
                 res.redirect('/orders/'+req.params.username+'/cart')
             }
         })
     } else if(req.params.action === 'inc') {
-        Order.findOneAndUpdate({'_id': req.params.id,'orderItems._id': req.params.itemId },{$inc:{'orderItems.$.quantity': 1}}, (err, updatedItem)=>{
+        Order.findOneAndUpdate({'_id': req.params.id,'orderItems._id': req.params.itemId },{$inc:{'orderItems.$.quantity': 1}}, {new: true}, (err, updatedOrder)=>{
             if (err) {
                 console.log(err);
             } else {
+                updatedOrder.orderTotal = newTotal(updatedOrder)
+                updatedOrder.save()
                 res.redirect('/orders/'+req.params.username+'/cart')
             }
         })
     } else if(req.params.action === 'dec') {
-        Order.findOneAndUpdate({'_id': req.params.id,'orderItems._id': req.params.itemId },{$inc:{'orderItems.$.quantity': -1}}, (err, updatedItem)=>{
+        Order.findOneAndUpdate({'_id': req.params.id,'orderItems._id': req.params.itemId },{$inc:{'orderItems.$.quantity': -1}},{new:true}, (err, updatedOrder)=>{
             if (err) {
                 console.log(err);
             } else {
+                updatedOrder.orderTotal = newTotal(updatedOrder)
+                updatedOrder.save()
                 res.redirect('/orders/'+req.params.username+'/cart')
             }
         })

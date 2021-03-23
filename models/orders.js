@@ -4,7 +4,8 @@ const {Schema, model} = mongoose
 const orderSchema = new Schema ({
     orderItems: [{
         product: String,
-        quantity: Number
+        quantity: Number,
+        price: Number
     }], 
     orderName: String,
     user: {type: String, required: true},
