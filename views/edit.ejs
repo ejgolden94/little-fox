@@ -8,73 +8,75 @@
             });
     </script>
 </head>
-<body>
+<body class="form-body">
     <%- include('./partials/nav.ejs') %>
-    <div class="section">
-        <h1>EDIT FLAVOR</h1>
-    </div>
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <form class="col m12" action="/flavors/<%=flavor.id%>?_method=PUT" enctype="multipart/form-data" method="POST">
-                    <div class="input-field col m12">
-                      <input id="flavor" name="flavor" type="text" class="validate" value="<%=flavor.flavor%>">
-                      <label for="flavor">Flavor</label>
-                    </div>
-                    <div class="input-field col m12">
-                        <textarea name="description" id="description" class="materialize-textarea"><%=flavor.description%></textarea>
-                        <label for="description">description</label>
-                    </div>
-                    <div class="input-field col m12">
-                        <input id="price" name="price" type="number" step="any" class="validate" value="<%=flavor.price%>">
-                        <label for="price">Price</label>
-                    </div>
-                    <p>
-                        <label>
-                            <input type="checkbox" id="glutenFree" name="glutenFree" class="filled-in"
-                                <% if(flavor.glutenFree){%> checked <%}%>
-                            />
-                            <span>Gluten Free</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" id="plantBased" name="plantBased" class="filled-in" 
-                            <% if(flavor.plantBased){%> checked <%}%>
-                            />
-                            <span>Plant-Based Option</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" id="available" name="available" class="filled-in"
-                                <% if(flavor.available){%> checked <%}%>
-                            />
-                            <span>In Stock?</span>
-                        </label>
-                    </p>
-                    <div class="input-field col s12">
-                        <select name="allergens" multiple>
-                          <option value="" disabled >Choose your option</option>
-                          <option value="dairy" <% if(flavor.allergens.includes('dairy')){%> selected="true" <%}%>>Dairy</option>
-                          <option value="peanuts" <% if(flavor.allergens.includes('peanuts')){%> selected="true" <%}%>>Peanuts</option>
-                          <option value="treenuts" <% if(flavor.allergens.includes('treenuts')){%> selected="true" <%}%>>Tree Nuts</option>
-                        </select>
-                        <label>Allergens</label>
-                    </div>
-                    <div class="file-field input-field">
-                        <div class="btn">
-                            <span>Image</span>
-                            <input id="img" name="img" type="file">
+    <div class="form-container">
+        <div class="section">
+            <h1 class="form-title">EDIT FLAVOR</h1>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <form class="col m12" action="/flavors/<%=flavor.id%>?_method=PUT" enctype="multipart/form-data" method="POST">
+                        <div class="input-field col m12">
+                        <input id="flavor" name="flavor" type="text" class="validate" value="<%=flavor.flavor%>">
+                        <label for="flavor">Flavor</label>
                         </div>
-                        <div class="file-path-wrapper">
-                          <input class="file-path validate" type="text">
+                        <div class="input-field col m12">
+                            <textarea name="description" id="description" class="materialize-textarea"><%=flavor.description%></textarea>
+                            <label for="description">description</label>
                         </div>
-                    </div>
-                    <input class="forest button" type="submit" value="Submit Changes">
-                </form>
-              </div>  
-        </div>      
+                        <div class="input-field col m12">
+                            <input id="price" name="price" type="number" step="any" class="validate" value="<%=flavor.price%>">
+                            <label for="price">Price</label>
+                        </div>
+                        <p>
+                            <label>
+                                <input type="checkbox" id="glutenFree" name="glutenFree" class="filled-in"
+                                    <% if(flavor.glutenFree){%> checked <%}%>
+                                />
+                                <span>Gluten Free</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" id="plantBased" name="plantBased" class="filled-in" 
+                                <% if(flavor.plantBased){%> checked <%}%>
+                                />
+                                <span>Plant-Based Option</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" id="available" name="available" class="filled-in"
+                                    <% if(flavor.available){%> checked <%}%>
+                                />
+                                <span>In Stock?</span>
+                            </label>
+                        </p>
+                        <div class="input-field col s12">
+                            <select name="allergens" multiple>
+                            <option value="" disabled >Choose your option</option>
+                            <option value="dairy" <% if(flavor.allergens.includes('dairy')){%> selected="true" <%}%>>Dairy</option>
+                            <option value="peanuts" <% if(flavor.allergens.includes('peanuts')){%> selected="true" <%}%>>Peanuts</option>
+                            <option value="treenuts" <% if(flavor.allergens.includes('treenuts')){%> selected="true" <%}%>>Tree Nuts</option>
+                            </select>
+                            <label>Allergens</label>
+                        </div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Image</span>
+                                <input id="img" name="img" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                        <input class="forest button" type="submit" value="Submit Changes">
+                    </form>
+                </div>  
+            </div>      
+        </div>
     </div>
 </body>
 </html>

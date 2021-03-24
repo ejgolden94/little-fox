@@ -61,19 +61,26 @@ h1 {
 
 .home-logo {
     height: 400px;
+    padding: 20px;
 }
 
 .greeting {
-    color: white;
+    color: whitesmoke;
     font-size: 3rem;
     font-weight: 300;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 .greeting p {
     max-width: 850px;
     min-width: 500px;
-    font-size: 35px;
+    font-size: 26px;
+    text-align: justify;
+    font-weight: 200;
 }
 
 .cart-action{
@@ -82,12 +89,6 @@ h1 {
     margin: 0 10px;
     font-weight: 300;
     display: inline;
-}
-
-.greeting > p {
-    width: 60%;
-    text-align: justify;
-    margin: 40px auto;
 }
 
 .btn {
