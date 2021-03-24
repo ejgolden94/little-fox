@@ -53,12 +53,13 @@ router.get('/:username/cart',(req,res)=>{
 })
 
 // Add to Cart Route 
-router.get('/:username/:id/add',(req,res)=>{
+router.post('/:username/:id/add',(req,res)=>{
     Flavors.findById(req.params.id,(err,foundFlavor)=>{
-        const newOrderItem = {product: foundFlavor.flavor, quantity: 1, price: foundFlavor.price}
+        const newOrderItem = {product: foundFlavor.flavor, quantity: req.body.quantity, price: foundFlavor.price}
+        const plusTotal = foundFlavor.price*req.body.quantity
         Order.findOneAndUpdate(
             {user: req.params.username, orderStatus: 'in cart'},
-            {$push:{orderItems: newOrderItem}, $inc:{orderTotal: foundFlavor.price}},
+            {$push:{orderItems: newOrderItem}, $inc:{orderTotal: plusTotal}},
             {new: true},
             (err, updatedOrder)=>{
                 if(updatedOrder){

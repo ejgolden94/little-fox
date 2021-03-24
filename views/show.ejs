@@ -18,11 +18,17 @@
         </div>
     </div>
     <% if (currentUser) {%>
-        <a href="/orders/<%=currentUser.username%>/<%=flavor.id%>/add">
-            <button class="z-depth-3 forest button"> Add to Cart </button>
-        </a>
+        <form action="/orders/<%=currentUser.username%>/<%=flavor.id%>/add" method="POST">
+            <div>
+                <label class="quantity-label" for="quantity">
+                    <input class="quantity" type="number" name="quantity" value=1 style="width: 50px; ">
+                    Quantity
+                </label>
+            </div>
+            <input class="z-depth-3 forest button btn" type="submit" value="Add to Cart">
+        </form>
     <%}%>
-    <a href="/flavors"><button class="z-depth-3 forest button"> Back to Menu </button></a>
+    <a href="/flavors"><button class="z-depth-3 forest button btn"> Back to Menu </button></a>
     <% if (currentUser) { %>
         <% if (currentUser.isAdmin) { %>
             <a href="/flavors/<%=flavor.id%>/edit">
