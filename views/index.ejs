@@ -9,29 +9,30 @@
         <h1>SHOP OUR FLAVORS</h1>
     </div>
     <div class="section">
-        <div class="container">
-            <div class="row">
+        <div class="flavor-container">
                 <% for (flavor of flavors) { %>
-                    <div class="col m3">
-                        <div class="card">
-                            <% if (flavor.img.contentType) { %>
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img src="data:image/<%=flavor.img.contentType%>;base64,
-                                    <%=flavor.img.data.toString('base64')%>">
-                                </div> 
-                            <%}%>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">
-                                    <a href="/flavors/<%=flavor.id%>"><%=flavor.flavor%></a>
-                                </span>
-                            </div>
+                        <div class="card flavor-card">
+                            <a href="/flavors/<%=flavor.id%>">
+                                <% if (flavor.img.contentType) { %>
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                            <img src="data:image/<%=flavor.img.contentType%>;base64,
+                                            <%=flavor.img.data.toString('base64')%>">
+                                        </a>
+                                    </div> 
+                                <%}%>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">
+                                        <%=flavor.flavor%>
+                                    </span>
+                                </div>
+                            </a>    
                         </div>
-                    </div>
                 <%}%>
-            </div>
+        </div>
+        <div class="section">
             <% if(currentUser) { %>
                 <% if(currentUser.isAdmin) { %>
-                <a href="/flavors/new" class="btn-floating btn-large rose">
+                <a href="/flavors/new" class="btn-floating btn-large rose left" style="margin:20px;">
                     <i class="large material-icons">add</i>
                 </a>
                 <%}%>
