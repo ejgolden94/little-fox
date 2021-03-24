@@ -70,6 +70,12 @@ h1 {
     text-align: center;
 }
 
+.greeting p {
+    max-width: 850px;
+    min-width: 500px;
+    font-size: 35px;
+}
+
 .cart-action{
     font-size: 1.2rem;
     color: #DEAD46 !important;
@@ -129,4 +135,10 @@ h1 {
 .carousel-item {
     width: 500px !important;
     min-height: 800px !important;
+}
+
+.about {
+    padding-bottom: 3%;
+    position: relative;
+    margin-bottom: 0;
 }
