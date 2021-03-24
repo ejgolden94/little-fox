@@ -133,7 +133,7 @@ router.put('/:id/edit',(req,res)=>{
         if (err) {
             console.log(err);
         } else {
-            res.redirect('/orders/active')
+            res.redirect('back')
         }
     })
 })

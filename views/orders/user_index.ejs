@@ -28,6 +28,7 @@
                           </div>
                           <div class="card-action">
                             <form action="/orders/<%=order.id%>/edit?_method=PUT" method="POST">
+                                <input type="hidden" name="orderStatus" value="cancelled">
                                 <input class="btn forest cart-action" type="submit" value="Cancel Order">
                             </form>                           
                           </div>
