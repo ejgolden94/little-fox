@@ -20,6 +20,21 @@ router.get('/active', (req,res)=>{
     })
 })
 
+// Index route for all of a users orders
+router.get('/:username', (req,res)=>{
+    Order.find({user: req.params.username, orderStatus: {$ne:'in cart'}}, (err, foundOrders)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('orders/user_index.ejs',{
+                currentUser: req.session.currentUser,
+                title: 'Your Orders',
+                orders: foundOrders
+            })
+        }
+    })
+})
+
 // Index Route for the Cart
 router.get('/:username/cart',(req,res)=>{
     // find an order tied to the current user's name that is not submitted

@@ -10,6 +10,7 @@
             <li><a href="/flavors/">Shop</a> </li>
             <li><a href="/menu">PDF Menu</a></li>
             <li>Welcome <%= currentUser.username %></li>
+            <li><a href="/orders/<%= currentUser.username %>">Your Orders</a></li>
             <li><a href="/orders/<%= currentUser.username %>/cart/"><i class="material-icons ">shopping_cart</i></a></li>
             <li>
                 <form action="/sessions?_method=DELETE" method="POST">

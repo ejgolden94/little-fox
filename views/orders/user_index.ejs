@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="section">
+        <h1>YOUR ORDERS</h1>
+    </div>
+    <div class="section">
+        <div class="container">
+            <h2>IN PROGRESS</h2>
+            <div class="row">
+                <% for (order of orders) {  %>
+                    <% if (['pending','confirmed','complete'].includes(order.orderStatus)){ %>
+                    <div class="col s12 m6">
+                        <div class="card forest">
+                          <div class="card-content white-text">
+                            <span class="card-title"><%=order.orderName%> - <%=order.pickUpDate.toLocaleDateString("en-US")%> <%=order.pickUpTime%></span>
+                            <ul>
+                                <%for (item of order.orderItems) {%>
+                                    <li><%=item.product%> (<%=item.quantity%>)</li>
+                                <%}%>
+                            </ul>
+                            <p>Order Total: $<%=order.orderTotal%></p>
+                            <p>Order Status: <%=order.orderStatus%></p>
+                          </div>
+                          <div class="card-action">
+                            <form action="/orders/<%=order.id%>/edit?_method=PUT" method="POST">
+                                <input class="btn forest cart-action" type="submit" value="Cancel Order">
+                            </form>                           
+                          </div>
+                        </div>
+                      </div> 
+                      <%}%>               
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+        <div class="container">
+            <h2>PAST ORDERS</h2>
+            <div class="row">
+                <% for (order of orders) {  %>
+                    <% if (!['pending','confirmed','complete'].includes(order.status)){ %>
+                    <div class="col s12 m6">
+                        <div class="card forest">
+                          <div class="card-content white-text">
+                            <span class="card-title"><%=order.orderName%> - <%=order.pickUpDate.toLocaleDateString("en-US")%> <%=order.pickUpTime%></span>
+                            <ul>
+                                <%for (item of order.orderItems) {%>
+                                    <li><%=item.product%> (<%=item.quantity%>)</li>
+                                <%}%>
+                            </ul>
+                            <p>Order Total: $<%=order.orderTotal%></p>
+                            <p>Order Status: <%=order.orderStatus%></p>
+                          </div>
+                        </div>
+                      </div>   
+                      <%}%>           
+                <%}%>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

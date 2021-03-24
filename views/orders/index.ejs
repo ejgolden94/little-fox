@@ -31,11 +31,11 @@
                           <div class="card-action">
                             <form action="/orders/<%=order.id%>/edit?_method=PUT" method="POST">
                                 <select name="orderStatus" onchange="this.form.submit()">
-                                    <option value="pending" <%if(order.orderStatus === 'pending'){%> selected=true <%}%> >Pending</option>
-                                    <option value="confirmed" <%if(order.orderStatus === 'confirmed'){%> selected=true <%}%>>Confirmed</option>
-                                    <option value="complete" <%if(order.orderStatus === 'complete'){%> selected=true <%}%>>Complete</option>
-                                    <option value="picked up" <%if(order.orderStatus === 'picked up'){%> selected=true <%}%>>Picked Up</option>
-                                    <option value="cancelled" <%if(order.orderStatus === 'cancelled'){%> selected=true <%}%>>Cancelled</option>
+                                    <option value="pending" <%if(order.orderStatus === 'pending'){%> selected=true <%}%>> Pending </option>
+                                    <option value="confirmed" <%if(order.orderStatus === 'confirmed'){%> selected=true <%}%>> Confirmed </option>
+                                    <option value="complete" <%if(order.orderStatus === 'complete'){%> selected=true <%}%>> Complete </option>
+                                    <option value="picked up" <%if(order.orderStatus === 'picked up'){%> selected=true <%}%>> Picked Up </option>
+                                    <option value="cancelled" <%if(order.orderStatus === 'cancelled'){%> selected=true <%}%>> Cancelled </option>
                                 </select>
                             </form>                           
                           </div>
