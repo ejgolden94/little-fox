@@ -2,6 +2,19 @@
 <html lang="en">
 <head>
     <%- include('./partials/head.ejs') %>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel({
+                numVisible: 3,
+                dist: 0,
+                indicators: true,
+                padding: 200   
+            });
+            setInterval(()=>{
+                $('.carousel').carousel('next');
+                }, 4500);
+        })
+    </script>
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
@@ -13,3 +26,46 @@
             here + can’t wait for you to taste what we’re all about. we bet you are at
             the very least, going to like it at a lil’ bit!!</p>
     </div>
+    <div class="carousel">
+        <img class="carousel-item" src="https://i.imgur.com/ViSzzW9.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/jbYX9Ge.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/dXjZvUU.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/u0vjLcQ.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/ETIblTl.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/jOdAZ3d.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/4xpmoNf.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/hGClT47.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/D9MJN7a.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/JMSfZwi.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/ZJVaCG1.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/2ejmXTG.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/JLLg1ZM.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/cSDSdZQ.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/5Rsgroq.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/epftnH6.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/xvnjz4i.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/8rg0Dsc.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/XYJTTGj.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/5JLonnV.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/viWrCto.jpg">
+        <img class="carousel-item" src="https://i.imgur.com/4xpmoNf.jpg">
+    </div> 
+
+    <div class="row">
+        <h2>Find Us!</h2>
+        <div class="col offset-m3 m3">
+            <h3>Hours</h3>
+            <p>Sat & Sun: 12PM to 8PM</p>
+            <p>(or until we run out of icecream!)</p>
+            <p>M-F: Closed</p>
+        </div>
+        <div class="col m3">
+            <h3>Location</h3>
+            <p>1114 N Coast Hwy 101 Suite 4</p>
+            <p>Encinitas, CA</p>
+            <p>92024</p>
+            <p>(Attached to Threadspun)</p>
+        </div>
+    </div>
+</body>
+          

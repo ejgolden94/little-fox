@@ -119,3 +119,14 @@ h1 {
 .form-title{
     font-size: 40px;
 }
+
+.carousel {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 900px !important;
+}
+
+.carousel-item {
+    width: 500px !important;
+    min-height: 800px !important;
+}
