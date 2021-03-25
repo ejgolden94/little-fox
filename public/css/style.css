@@ -34,6 +34,8 @@ h1 {
 .show-img {
     border-radius: 5%;
     width: 30%;
+    margin-right: 5%;
+    border: 3px solid #FAEDDF;
 }
 
 .button {
@@ -148,14 +150,39 @@ h1 {
 }
 
 .quantity{
-    text-align: center;
+    width: 50px !important;
+    text-align: center !important;
     background-color: whitesmoke !important;
     border: 1px solid rgb(97, 95, 95) !important;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3) !important;
+    box-shadow: 1px 2px 1px rgba(58, 58, 58, 0.3) !important;
     border-radius: 3px !important;
 }
 
-.quantity-label {
+.quantity-label, .product-price{
     font-size: 22px;
-    color: black;
+    color: #3a3938;
+    /* color: whitesmoke; */
+}
+
+.product-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:60%;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    padding: 3% 0;
+    border-radius: 15px;
+}
+
+.product-info {
+    width:30%;
+    text-align: left;
+}
+
+.product-desc {
+    font-size: 30px;
+    /* font-weight: 300; */
+    margin-bottom: 10%;
+    color: #FAEDDF;
 }

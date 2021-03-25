@@ -5,37 +5,40 @@
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
-    <div class="container">
+    <div class="section">
         <h1 style="font-size: 40px;"><%=flavor.flavor.toUpperCase()%></h1>
     </div>
     <div class="section">
-        <div class="container">
+        <div class="product-container rose">
             <% if (flavor.img.contentType) { %>
-            <img class="show-img z-depth-3" src="data:image/<%=flavor.img.contentType%>;base64,
+            <img class="show-img z-depth-4" src="data:image/<%=flavor.img.contentType%>;base64,
                 <%=flavor.img.data.toString('base64')%>">
             <%}%>
-            <p><%=flavor.description%></p>
+            <div class="product-info">
+                <p class="product-desc"><%=flavor.description%></p>
+                <p class="product-price">$<%=flavor.price%></p>
+                <% if (currentUser) {%>
+                    <form action="/orders/<%=currentUser.username%>/<%=flavor.id%>/add" method="POST">
+                        <div>
+                            <label class="quantity-label" for="quantity">
+                                <input class="quantity" type="number" name="quantity" value=1>
+                                Quantity
+                            </label>
+                        </div>
+                        <input class="z-depth-3 marigold button btn" type="submit" value="Add to Cart">
+                    </form>
+                <%}%>
+            </div>
         </div>
     </div>
-    <% if (currentUser) {%>
-        <form action="/orders/<%=currentUser.username%>/<%=flavor.id%>/add" method="POST">
-            <div>
-                <label class="quantity-label" for="quantity">
-                    <input class="quantity" type="number" name="quantity" value=1 style="width: 50px; ">
-                    Quantity
-                </label>
-            </div>
-            <input class="z-depth-3 forest button btn" type="submit" value="Add to Cart">
-        </form>
-    <%}%>
-    <a href="/flavors"><button class="z-depth-3 forest button btn"> Back to Menu </button></a>
+    <a href="/flavors"><button class="z-depth-3 button forest btn"> Back to Menu </button></a>
     <% if (currentUser) { %>
         <% if (currentUser.isAdmin) { %>
             <a href="/flavors/<%=flavor.id%>/edit">
-                <button class="z-depth-3 rose right button"> Edit </button>
+                <button class="z-depth-3 forest right button"> Edit </button>
             </a>
             <form action="/flavors/<%=flavor.id%>?_method=DELETE" method="POST">
-                <input class="z-depth-3 button rose right" type="submit" value="Delete">
+                <input class="z-depth-3 button forest right" type="submit" value="Delete">
             </form>
         <% } %>
     <% } %>
