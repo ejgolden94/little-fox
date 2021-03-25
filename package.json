@@ -1,6 +1,9 @@
 {
   "name": "little-fox",
   "version": "1.0.0",
+  "engines": {
+    "node": "15.3.0"
+  },
   "description": "a basic crus app for an icecream store",
   "main": "server.js",
   "scripts": {
