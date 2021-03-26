@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
     <%- include('../partials/head.ejs') %>
-    <script>
-          $(document).ready(function(){
-                $('select').formSelect();
+    <% if (message) { %>
+        <script>  
+            $(document).ready(function(){
+                $('#modal1').modal();
+                $('#modal1').modal('open');
             });
-    </script>
+        </script>
+    <% } else {%>
+        <script>  
+            $(document).ready(function(){
+                $('#modal1').modal();
+            });
+        </script>
+    <% } %>
 </head>
 <body class="form-body">
     <%- include('../partials/nav.ejs') %>
@@ -25,7 +34,7 @@
                         </div>
 
                         <div class="input-field col m12">
-                            <input id="password" name="password" type="password" class="validate">
+                            <input id="password" name="password" type="password" required=true class="validate">
                             <label for="password">Password</label>
                         </div>
 
@@ -33,6 +42,16 @@
                     </form>
                 </div>  
             </div>      
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4><i class="material-icons small">warning</i> Error!</h4>
+            <p><%=message%></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
 </body>

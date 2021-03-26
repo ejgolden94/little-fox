@@ -23,7 +23,7 @@
                                     <li><%=item.product%> (<%=item.quantity%>)</li>
                                 <%}%>
                             </ul>
-                            <p>Order Total: $<%=order.orderTotal%></p>
+                            <p>Order Total: $<%=order.orderTotal.toFixed(2)%></p>
                             <p>Order Status: <%=order.orderStatus%></p>
                           </div>
                           <div class="card-action">
@@ -45,7 +45,7 @@
             <h2>PAST ORDERS</h2>
             <div class="row">
                 <% for (order of orders) {  %>
-                    <% if (!['pending','confirmed','complete'].includes(order.status)){ %>
+                    <% if (!['pending','confirmed','complete'].includes(order.orderStatus)){ %>
                     <div class="col s12 m6">
                         <div class="card forest">
                           <div class="card-content white-text">
@@ -55,7 +55,7 @@
                                     <li><%=item.product%> (<%=item.quantity%>)</li>
                                 <%}%>
                             </ul>
-                            <p>Order Total: $<%=order.orderTotal%></p>
+                            <p>Order Total: $<%=order.orderTotal.toFixed(2)%></p>
                             <p>Order Status: <%=order.orderStatus%></p>
                           </div>
                         </div>

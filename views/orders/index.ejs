@@ -26,7 +26,7 @@
                                     <li><%=item.product%> (<%=item.quantity%>)</li>
                                 <%}%>
                             </ul>
-                            <p>Order Total: $<%=order.orderTotal%></p>
+                            <p>Order Total: $<%=order.orderTotal.toFixed(2)%></p>
                           </div>
                           <div class="card-action">
                             <form action="/orders/<%=order.id%>/edit?_method=PUT" method="POST">

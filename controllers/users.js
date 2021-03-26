@@ -25,7 +25,7 @@ router.post('/', (req, res)=>{
             }
         } else {
             console.log(newUser);
-            res.redirect('/flavors')
+            res.redirect('/sessions/new')
         }
     })
 })

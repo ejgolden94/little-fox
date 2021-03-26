@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     <%- include('./partials/head.ejs') %>
+    <script>  
+        $(document).ready(function(){
+            $('#modal1').modal();
+        });
+    </script>
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
@@ -16,7 +21,7 @@
             <%}%>
             <div class="product-info">
                 <p class="product-desc"><%=flavor.description%></p>
-                <p class="product-price">$<%=flavor.price%></p>
+                <p class="product-price">$<%=flavor.price.toFixed(2)%></p>
                 <% if (currentUser) {%>
                     <form action="/orders/<%=currentUser.username%>/<%=flavor.id%>/add" method="POST">
                         <div>
@@ -42,5 +47,14 @@
             </form>
         <% } %>
     <% } %>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Added to the cart!</h4>   
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
 </body>
 </html>

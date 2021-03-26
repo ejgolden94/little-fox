@@ -9,7 +9,8 @@ const bcrypt = require('bcrypt');
 router.get('/new',(req,res)=>{
     res.render('sessions/new.ejs',{
         title:'Login',
-        currentUser: req.session.currentUser
+        currentUser: req.session.currentUser,
+        message: ''
     })
 })
 
@@ -24,10 +25,18 @@ router.post('/',(req,res)=>{
                     req.session.currentUser = foundUser
                     res.redirect('/flavors')
                 } else {
-                    res.send("Invalid password")
+                    res.render('sessions/new.ejs',{
+                        title:'Login',
+                        currentUser: req.session.currentUser,
+                        message: "Invalid password :("
+                    })
                 }
             } else {
-                res.send("User not found")
+                res.render('sessions/new.ejs',{
+                    title:'Login',
+                    currentUser: req.session.currentUser,
+                    message: "Username not found :("
+                })
             }
         }
     })
@@ -42,7 +51,7 @@ router.delete('/',(req,res)=>{
         } else {
             console.log("Successfully Logged Out: " + loggedOutUser);
         }
-        res.redirect('/')
+        res.redirect('/sessions/new')
     })
 })
 

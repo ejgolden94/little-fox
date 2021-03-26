@@ -167,12 +167,12 @@ h1 {
 .carousel {
     width: 100%;
     margin: 0 auto;
-    min-height: 900px !important;
+    min-height: 600px !important;
 }
 
 .carousel-item {
-    width: 500px !important;
-    min-height: 800px !important;
+    width: 400px !important;
+    min-height: 525px !important;
 }
 
 .about {

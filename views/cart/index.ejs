@@ -25,7 +25,7 @@
                           <div class="card-content white-text">
                             <span class="card-title"><%=item.product%></span>
                             <p>Qty: <%=item.quantity%> </p>
-                            <p>Price: <%=item.price%> </p>
+                            <p>Price: $<%=item.price.toFixed(2)%> </p>
                           </div>
                           <div class="card-action">
                             <form class="cart-action" action="/orders/<%=currentUser.username%>/<%=cart.id%>/<%=item.id%>/remove?_method=PUT" method="POST">
@@ -47,7 +47,7 @@
                 <%}%>
             </div>
             <div class="section">
-                <h2>Order Total: $<%=cart.orderTotal%></h2>
+                <h2>Order Total: $<%=cart.orderTotal.toFixed(2)%></h2>
             </div>
             <!-- Modal Trigger -->
             <a class="modal-trigger" href="#modal1">
