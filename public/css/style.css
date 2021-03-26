@@ -112,10 +112,6 @@ h1 {
     font-weight: 400;
 }
 
-.flavor-section {
-    /* background-color: rgba(56, 84, 79, 0.3); */
-}
-
 .flavor-container {
     display: flex;
     flex-wrap: wrap;
@@ -129,7 +125,7 @@ h1 {
 .flavor-card {
     width: 15%;
     margin: 2%;
-    min-width: 300px;
+    min-width: 250px;
     background-color: whitesmoke;
     color: #3a3938;
     border-radius: 10px;
@@ -185,7 +181,7 @@ h1 {
     margin-bottom: 0;
 }
 
-.quantity{
+.quantity {
     width: 50px !important;
     text-align: center !important;
     background-color: whitesmoke !important;
@@ -217,7 +213,23 @@ h1 {
 
 .product-desc {
     font-size: 30px;
-    /* font-weight: 300; */
     margin-bottom: 10%;
     color: #FAEDDF;
+}
+
+@media only screen and (max-width:1700px){
+    .flavors-header{
+        padding: 100px;
+        background-position: 50% 40%;
+    }
+
+    .flavor-container {
+        width: 75%;
+    }
+
+    .product-desc {
+        font-size: 24px;
+        margin-bottom: 10%;
+        color: #FAEDDF;
+    }
 }
