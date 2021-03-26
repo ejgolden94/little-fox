@@ -36,8 +36,8 @@ This is a basic CRUD App using:
 ---
 ## Routes
 ### General 
-- `get /` - main page of the site, carousel of images giving the vibe of the shop
-- `get /about` - about the shop, location, hours
+- `get /` - main page of the site, carousel of images giving the vibe of the shop plus location, and hours
+- `get /menu` - a pdf of the menu
 ### Flavors 
 - `get /flavors/seed` - seed the data base with flavors
 - `get /flavors` - see all of the icecream flavors  
@@ -47,13 +47,17 @@ This is a basic CRUD App using:
 - `get /flavors/:id/edit` - fill out a form to change the details of a specific icecream flavor
 - `put /flavors/:id/` - submit the edited details of a specific icecream flavor
 - `delete /flavors/:id` - delete a specific icecream flavor 
-- `post /flavors/:id/add` - adds a specific flavor to a customers cart 
+
 ### Cart 
-- `get /cart` - see all of the items in your cart (and the quantity?)
-- `delete /cart/:id` - remove an item from your cart 
-- `post /cart/place-order` - submit your order for pickup 
+- `post /orders/:username/:id/add` - adds a specific flavor to a customers cart 
+- `put /orders/:username/:id/:itemId/:action` - edit an item in your cart
+- `get /orders/:username` - see all of the items in your cart (and the quantity?)
+- `delete /cart/:username/:id` - remove an item from your cart 
+- `post /order/:id/placeOrder` - submit your order for pickup 
+
 ### Orders
-- `get /user/:id/orders` - see all of your past orders 
+- `get /orders/:username` - see all of your past and current orders 
+- `put /orders/:id/edit` - edit your order
 - `get /orders/active` - admin view of all orders that need to be filled and when
 ---
 ## Models
@@ -64,7 +68,10 @@ This is a basic CRUD App using:
     description: String,
     price: {type: Number, required: true, min: 0}, 
     available: {type: Boolean, default: true},
-    allergens: Array  
+    glutenFree: {type: Boolean, default: false},
+    plantBased: {type: Boolean, default: false},
+    allergens: Array,  
+    img: {data: Buffer, contentType: String}  
 }
 ```
 ### users
@@ -78,12 +85,17 @@ This is a basic CRUD App using:
 ### orders 
 ```
 {
-    orderName: {type: String, required: true},  
-    items: Array,
-    pickupTime: Timestamp,
-    orderAmount: Number, 
-    submitted: {type: Boolean, default: false},
-    filled: {type: Boolean, default: false},
+    orderItems: [{
+        product: String,
+        quantity: Number,
+        price: Number
+    }], 
+    orderName: String,
+    user: {type: String, required: true},
+    orderStatus: String,
+    pickUpTime: String,
+    pickUpDate: Date,
+    orderTotal: Number
 }
 ```
 ---
@@ -92,3 +104,12 @@ This is a basic CRUD App using:
 ![All Flavors](./littlefox_index.png)
 ![One Flavors](./littlefox_show.png)
 
+---
+## Future Features
+- Add more feedback to user actions -- like when you 'Add to Cart' a flag would show up to say you did that successfully
+- be able to search in the flavors index and also the orders indexes
+- display more info on the show page - such as the allergens, gluten free, and whether or not there's a plant based option
+- capability to add special instructions when placing an order
+- the ability to ask for help -- either via an email template or a chat 
+- the ability to place bulk orders 
+- Add a payment plugin like Stripe so users can pay ahead of time
