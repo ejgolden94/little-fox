@@ -2,11 +2,22 @@
 <html lang="en">
 <head>
     <%- include('../partials/head.ejs') %>
-    <script>
-          $(document).ready(function(){
+    <% if (message) { %>
+        <script>  
+            $(document).ready(function(){
                 $('select').formSelect();
+                $('#modal1').modal();
+                $('#modal1').modal('open');
             });
-    </script>
+        </script>
+    <% } else {%>
+        <script>  
+            $(document).ready(function(){
+                $('select').formSelect();
+                $('#modal1').modal();
+            });
+        </script>
+    <% } %>
 </head>
 <body class="form-body">
     <%- include('../partials/nav.ejs') %>
@@ -30,6 +41,15 @@
                     </form>
                   </div>  
             </div>      
+        </div>
+    </div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4><i class="material-icons small">warning</i> Error!</h4>
+            <p><%=message%></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
 </body>

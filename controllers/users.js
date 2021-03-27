@@ -10,7 +10,8 @@ const userAdmins = require('../models/userAdmins');
 router.get('/new', (req,res)=>{
     res.render('users/new.ejs',{
         title: 'New User', 
-        currentUser: req.session.currentUser
+        currentUser: req.session.currentUser,
+        message: ""
     })
 })
 
@@ -21,7 +22,11 @@ router.post('/', (req, res)=>{
     User.create(req.body, (err, newUser)=>{
         if (err) {
             if(err.code === 11000){
-                res.send("That username is not available :(")
+                res.render('users/new.ejs',{
+                    title:'New User',
+                    currentUser: req.session.currentUser,
+                    message: "That username is not available :("
+                })
             }
         } else {
             console.log(newUser);
