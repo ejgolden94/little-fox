@@ -64,7 +64,7 @@ router.post('/:username/:id/add',(req,res)=>{
             (err, updatedOrder)=>{
                 if(updatedOrder){
                     console.log(updatedOrder);
-                    res.redirect('back')
+                    res.redirect('/orders/'+req.params.username+'/cart')
                 } else {
                     /// if no cart is found to add to, create one
                     const newCart = {
@@ -78,7 +78,7 @@ router.post('/:username/:id/add',(req,res)=>{
                             console.log(err);
                         } else {
                             console.log(newOrder);
-                            res.redirect('back')
+                            res.redirect('/orders/'+req.params.username+'/cart')
                         }
                     })
                 }
