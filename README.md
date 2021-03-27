@@ -107,9 +107,11 @@ This is a basic CRUD App using:
 ---
 ## Future Features
 - Add more feedback to user actions -- like when you 'Add to Cart' a flag would show up to say you did that successfully
+- adding product thumbnails to the cart
 - be able to search in the flavors index and also the orders indexes
 - display more info on the show page - such as the allergens, gluten free, and whether or not there's a plant based option
 - capability to add special instructions when placing an order
 - the ability to ask for help -- either via an email template or a chat 
-- the ability to place bulk orders 
+- the ability to place bulk orders
+- the ability to join the "super secret club for icecream lovers only" and sign up for the newsletter
 - Add a payment plugin like Stripe so users can pay ahead of time
