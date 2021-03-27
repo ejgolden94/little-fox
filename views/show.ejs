@@ -26,7 +26,7 @@
                     <form action="/orders/<%=currentUser.username%>/<%=flavor.id%>/add" method="POST">
                         <div>
                             <label class="quantity-label" for="quantity">
-                                <input class="quantity" type="number" name="quantity" value=1>
+                                <input class="quantity" type="number" name="quantity" value=1 min=1 max=10>
                                 Quantity
                             </label>
                         </div>

@@ -119,6 +119,6 @@ This is a basic CRUD App using:
 
 
 ## Known Bugs
-- quantity field should have a min of 0
+- quantity field should have a min of 0, and you should not be able to reduce your quantity below zero in the cart
 - pick up date and time should not be outside of open hours and should not be earlier than now (or really 30 mins from now)
 - if a flavor record is updated, its should update everyones cart (thinking about availability and price)
